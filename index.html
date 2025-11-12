@@ -14,8 +14,8 @@
   <div class="container" id="top" style="background-color: white;position:fixed;top:0;left:0;">
     <div class="infotop" style="position:fixed;top:30%;left:-200px;opacity:0;">
       <p style="font-size: 30px;color:rgb(70, 70, 70);margin-top:0px;margin-bottom:5px;" id="infotop1">Hey, I'm</p>
-      <p style="color:#5a68ff;margin-top:0px;margin-bottom:0px;line-height:190px;font-weight:500"
-        id="infotop2">Wilbur Wei</p>
+      <p style="color:#5a68ff;margin-top:0px;margin-bottom:0px;line-height:190px;font-weight:500" id="infotop2">Wilbur
+        Wei</p>
       <p style="margin-top:5px;margin-bottom:0px;font-size:45px;color:black;font-weight: 400;" id="infotop3">I make cool
         things.</p>
     </div>
@@ -73,7 +73,7 @@
 
   </div>
   <div class="container"
-    style="background-color:#eef0ff;position:relative;z-index:55;height:auto;padding-top:5%;padding-bottom:10%;display:flex;align-items: center;justify-content: center;">
+    style="background-color:#eef0ff;position:relative;z-index:55;height:auto;padding-top:7%;padding-bottom:13%;display:flex;align-items: center;justify-content: center;">
     <div id="quotebox"
       style="background-color: #717dfd;position:relative;height:auto;left:-300px;width:60%;border-radius:15px;padding:30px;display:flex;flex-direction: column;align-items: center;justify-content: center;">
       <!-- <div style="display:flex;flex-direction: row;height:50%;width:100%;margin-bottom:30px;">
@@ -118,26 +118,27 @@
         "description": "An interactive 3D model highlighting Acadia National Park with information on trails, landmarks, and more. Project submission for HackPHS.",
         "tags": ["Three.js", "JavaScript", "HTML", "CSS"],
         "image": "/trailbound.png",
-        "github:": "https://github.com/wilburcoding/trailbound",
+        "github": "github.com/wilburcoding/trailbound",
         "id": "trailbound"
       },
       "2048ai": {
         "description": "A simple 2048 AI game made with Python and Tkinter. As one of my first artificial intelligence projects, this was pretty successful. ",
         "tags": ["Python", "Tkinter", "AI"],
         "image": "/2048ai.jpeg",
-        "github:": "https://github.com/wilburcoding/2048ai",
+        "github": "github.com/wilburcoding/2048ai",
         "id": "2048ai"
       },
       "3D Wildfire Simulation": {
         "description": "An interactive 3D Wildfire Simulation with somewhat realistic terrain, smoke, soil moisture, and movement with wind",
         "tags": ["Babylon.js", "JavaScript", "HTML", "CSS"],
         "image": "/firesim.png",
-        "github:": "https://github.com/wilburcoding/3dWildfireSimulation",
+        "github": "github.com/wilburcoding/3dWildfireSimulation",
         "id": "wildfire"
       }
     }
     for (const project of Object.keys(projects)) {
       const pdata = projects[project];
+      const link = pdata["github"];
       let tags = ""
       for (const tag of pdata["tags"]) {
         tags += `<div class="tag"><p>${tag}</p></div>`
@@ -146,7 +147,11 @@
                 <div class="project" id="p-${pdata["id"]}">
             <img src="./projectimages${pdata["image"]}" style="height:220px;width:30%;object-fit: cover;border-radius:8px;"/>
             <div style="display:flex;height:22%;width:70%;padding:0px;margin:0px;margin-left:20px;flex-direction: column;">
+              <div style="display:flex;flex-direction:row;align-items: center;">
+
               <p style="font-size:50px;margin-top:0px;margin-bottom:5px;font-weight: 800;line-height:48px;">${project}</p>
+                  <button class="link" id="pi-${pdata["id"]}"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:20px;margin-top:4px;color:white;"></i></button>
+              </div>
               <p style="font-size:25px;margin-top:4px;margin-bottom:3px;">${pdata["description"]}</p>
               <div style="display:flex;flex-direction: row;align-items: center;margin-top:5px;">
               ${tags}
@@ -154,6 +159,9 @@
             </div>
           </div>
           `)
+      $("#pi-" + pdata["id"]).on("click", () => {
+        window.open("https://" + link, "_blank");
+      })
       const ptl = gsap.timeline({
         scrollTrigger: {
           trigger: "#p-" + pdata["id"],
@@ -169,6 +177,17 @@
       });
 
     }
+    $(".plist").append(`
+    <div style="display:flex;flex-direction:row;align-items:center">
+    <p style="color:#5a68ff;font-size:25px;font-weight: 600;margin-top:5px;">See more projects at my Github page!</p>
+    <button class="link" id="moreprojects"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:20px;margin-top:4px;"></i></button>
+    </div>
+    `)
+    $("#moreprojects").on("click", () => {
+      window.open("https://github.com/wilburcoding", "_blank");
+    })
+
+
     for (let i = 0; i < 9; i++) {
 
       $("#top").append(`<div id="ball${i}" class="ball" style="width:15vh;height:15vh;opacity:0"></div>`);
@@ -218,6 +237,7 @@
       $(".infotop").animate({
         opacity: 1,
       }, 1000)
+
     })
 
     //for the about info stuff

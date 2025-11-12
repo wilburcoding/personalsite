@@ -92,7 +92,16 @@ p {
   font-size: 200px;
 }
 
-
+.link {
+  background:transparent;
+  margin:0;
+  vertical-align: center;
+  padding: 10px;
+  border:none;
+}
+.link:hover {
+  scale:1.1
+}
 
 @media screen and (max-width: 1100px) {
   #infotop2 {
