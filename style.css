@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 25px;
+  font-family: "Dosis", sans-serif;
+  color: white;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+
+}
+
+.ball {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: #5a68ff;
+  position: fixed;
+  top: -100px;
+  right: -100px;
+  z-index: 2;
+}
+
+.tag {
+  background-color: #303dc2;
+  color: white;
+  border-radius: 10px;
+  padding: 4px 15px;
+  margin: 0px;
+  margin-right: 10px;
+
+}
+
+.tag p {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.project {
+  background-color: #717dfd;
+  border-radius: 5px;
+  position: relative;
+  padding: 15px;
+  left: -300px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.animated-element {
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(26, 101, 126);
+  border-radius: 8px;
+  position: relative;
+  left: -400px;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-size: .85em;
+  line-height: 1.4em;
+  margin-bottom: 0;
+}
+
+.pmain {
+  width: 60%;
+  margin-top: 50px;
+}
+
+
+#aboutimg {
+  transition: 0.3s ease-in-out
+}
+
+#aboutimg:hover {
+  scale: 1.05;
+}
+
+#infotop2 {
+  font-size: 200px;
+}
+
+
+
+@media screen and (max-width: 1100px) {
+  #infotop2 {
+    font-size: 150px;
+  }
+
+  .pmain {
+    width: 70%;
+  }
+
+  .ball {
+    width:10vh !important;
+    height: 10vh !important;
+  }
+
+  #aboutbox {
+    flex-direction: column-reverse !important;
+    
+  }
+
+  #aboutimg {
+    width:100% !important;
+    height:20% !important;
+  }
+
+
+}
