@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Wilbur Wei - Hackathon Travels!</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.17.0-beta.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.17.0-beta.1/mapbox-gl.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <div class="sidebar">
+    <p style="font-size:15px;color:rgb(77, 77, 77);cursor:pointer" id="return">Return Home</p>
+    <h1 style="font-size:40px;">Hackathon Travels</h1>
+    <p style="color:black;font-size:20px;font-weight: 400;">Hackathons are some of my favorite things to do. For the
+      past few years, I've spent so much time attending hackathons and recently, I've also helped organized a couple of
+      them. Check the many I've attended and plan on attending!</p>
+    <div id="hlist">
+
+    </div>
+  </div>
+  <div id="map"></div>
+  <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiaXBhZGRyZXNzZXNhcmVjb29sIiwiYSI6ImNremg3ejc4YjNxOGgycnBydzVkejN1ZnIifQ.dowjcNgmivNRA9W_a9b96g';
+    const hackathons = {
+      "Shipwrecked": {
+        "id": "shipwrecked",
+        "location": [42.31804047947839, -71.00744765263796],
+        "desc": "I had the unique experience of attending the world's first private island hackathon! It was an incredible experience and I made so many lasting memories. ",
+        "tags": ["Past", "Attendee"]
+      },
+      "Hack the Nest": {
+        "id": "hackthenest",
+        "location": [38.91890955311155, -77.2289615919081],
+        "desc": "One of the furthest and longest hackathons I went to. I had a ton of fun with the two friends I brought with me, especially since we landed a private room!",
+        "tags": ["Past", "Attendee"]
+      },
+      "TeenHacksLI 2023": {
+        "id": "teenhacksli2023",
+        "location": [40.71987326798376, -73.6524666549314],
+        "desc": "One of the first hackathons I went to and placed in, I had a really great time with my unproductive teammates!",
+        "tags": ["Past", "Attendee", "Winner"]
+
+      },
+      "TeenHacksLI 2024": {
+        "id": "teenhacksli2024",
+        "location": [40.72196302340098, -73.65121138107406],
+        "desc": "I came back to TeenHacksLI with a new, more experienced team and did pretty well. Once again, a pretty great experience!",
+        "tags": ["Past", "Attendee", "Winner"]
+
+      },
+      "TeenHacksLI 2025": {
+        "id": "teenhacksli2025",
+        "location": [40.72133691679395, -73.65408670922594],
+        "desc": "I went to TeenHacksLI 2025 and made a somewhat simple game. Although there wasn't much people, it was still a fun experience.",
+        "tags": ["Past", "Attendee", "Winner"]
+
+      },
+      "HackStoga": {
+        "id": "hackstoga",
+        "location": [40.04818079982236, -75.45238746150724],
+        "desc": "Another far hackathon that I went to. Did this one solor but still had a great experience making a cool game I was pretty proud of.",
+        "tags": ["Past", "Attendee"]
+
+      },
+      "RidgeHacks": {
+        "id": "ridgehacks",
+        "location": [40.69427861422962, -74.54709136282519],
+        "desc": "Although it was somewhat far, I really liked the project I made which helped my team win 1st place overall. ",
+        "tags": ["Past", "Attendee", "Winner"]
+
+      },
+      "HackMHS": {
+        "id": "hackmhs",
+        "location": [40.720171866613036, -74.31607124961867],
+        "desc": "Another New Jersey hackathon I went to. Thought my project was pretty good even though we didn't win. Great food though. ",
+        "tags": ["Past", "Attendee"]
+
+      },
+      "Scrapyard NJ": {
+        "id": "scrapyardnj",
+        "location": [40.71195058083988, -74.35852563027854],
+        "desc": "My first Hack CLub event! Was a pretty small event but had a ton of fun. The tshirt and stickers were really cool!",
+        "tags": ["Past", "Attendee", "Winner"]
+
+      },
+      "HackPHS": {
+        "id": "hackphs",
+        "location": [40.357671965286706, -74.65531829032976],
+        "desc": "Was a really nicely planned hackathon with a lot of workshops and events. Had a lot of fun + was able to visit the campus of Princeton University.",
+        "tags": ["Past", "Attendee"]
+      },
+      "Daydream NYC": {
+        "id": "daydreamnyc",
+        "location": [40.70278953053677, -73.98422806243734],
+        "desc": "Helped organize the NYC satellite event of Hack Club's global game jam Daydream! Was a ton of fun working with the other organizers.",
+        "tags": ["Past", "Organizer"]
+      },
+      "St. Joseph's College Programming Contest": {
+        "id": "stjosephs",
+        "location": [40.77624613155191, -73.02590328823246],
+        "desc": "One of my first competitive programming contests. Had a lot of fun working with the best programmers from our school.",
+        "tags": ["Past", "Attendee"]
+      },
+      "Roslyn Code Overload 2024": {
+        "id": "roslyn2024",
+        "location": [40.792219732085016, -73.63971697631159],
+        "desc": "Small local hackathon but had a lot of fun going with my friends. Had great food and was able to meet some new people.",
+        "tags": ["Past", "Attendee"]
+      },
+      "Roslyn Code Overload 2025": {
+        "id": "roslyn2025",
+        "location": [40.79282080380478, -73.63871919452752],
+        "desc": "Looking forward to help organize this event with my friends this year, planning some pretty exciting things (if we can get a sponsor).",
+        "tags": ["Future", "Organizer"],
+      },
+      "Widener University Programming Contest": {
+        "id": "widener",
+        "location": [39.861333041864974, -75.35807877566046],
+        "desc": "Looking forward to attending with some friends as part of my school's competitive programming team.",
+        "tags": ["Future", "Attendee"]
+      },
+      "Cornell High School Programming Contest": {
+        "id": "cornell",
+        "location": [40.75556527564769, -73.95604195803944],
+        "desc": "Looking forward to attending with some friends as part of my school's competitive programming team.",
+        "tags": ["Future", "Attendee"],
+      }
+
+    }
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/satellite-streets-v12',
+      center: [-76.006, 40.7128],
+      zoom: 6,
+      pitch: 0,
+      bearing: 0
+    });
+    $("#return").on("click", () => {
+      window.location.href = "./";
+    })
+    map.addControl(new mapboxgl.NavigationControl());
+
+    for (let key of Object.keys(hackathons)) {
+      const data = hackathons[key];
+      let tags = "";
+      for (const tag of data["tags"]) {
+        tags += `<div class="tag"><p>${tag}</p></div>`
+      }
+      $("#hlist").append(`
+      <div class="hitem" id="hi-${data["id"]}">
+        <h2 style="font-size:30px;">${key}</h2>
+        <p style="font-size:16px;">${data["desc"]}</p>
+        <div style="display:flex;flex-direction: row;align-items: center;margin-top:5px;">
+        ${tags}
+        </div>
+      </div>
+      `)
+      $("#hi-" + data["id"]).on("click", () => {
+        map.flyTo({
+          center: [data["location"][1], data["location"][0]],
+          zoom: 16
+        });
+      })
+      const el = document.createElement('img');
+      el.src = './assets/markericon.png'; 
+      el.style.width = '30px';
+      el.style.height = '60px';
+      el.style.cursor = 'pointer';
+      const marker = new mapboxgl.Marker(el).setLngLat([data["location"][1], data["location"][0]]).addTo(map);
+      marker.setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(`<p style="color:black;margin-top:3px;margin-bottom:0px;font-size:16px;">${key}</p>`));
+    }
+
+    // const lenis = new Lenis();
+    // lenis.on('scroll', (e) => {
+    //   console.log(e);
+    // })
+
+
+    // function raf(time) {
+    //   lenis.raf(time);
+    //   requestAnimationFrame(raf);
+    // }
+
+  </script>
+</body>
+
+</html>

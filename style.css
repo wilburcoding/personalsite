@@ -24,6 +24,10 @@ body {
   z-index: 2;
 }
 
+.ball:hover {
+  scale: 1.1 !important;
+}
+
 .tag {
   background-color: #303dc2;
   color: white;
@@ -45,12 +49,29 @@ body {
   background-color: #717dfd;
   border-radius: 5px;
   position: relative;
+  cursor: pointer;
   padding: 15px;
   left: -300px;
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
+  transition-duration: 0.4s;
 }
+.project:hover {
+  padding-top:40px;
+  border-radius:15px;
+  padding-bottom:40px;
+}
+
+#quote {  
+  transition-duration: 0.4s;
+}
+#quote:hover {
+  padding-top: 20px;
+  border-radius: 15px;
+  padding-bottom: 20px;
+}
+
 
 .animated-element {
   width: 300px;
@@ -79,10 +100,78 @@ p {
   margin-top: 50px;
 }
 
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.sidebar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 25vw;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  z-index: 100;
+}
+
+.sidebar {
+  color: #5a68ff;
+}
+
+.sidebar h1,
+.sidebar p {
+  margin: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 0;
+}
 
 #aboutimg {
   transition: 0.3s ease-in-out
 }
+
+#hlist {
+  width: 25vw;
+  height: 50vh;
+  overflow-y: scroll;
+  overflow-x:hidden;
+}
+
+.hitem {
+  background-color: #717dfd;
+  border-radius: 5px;
+  position: relative;
+  color:white;
+  width:21vw;
+  box-sizing: border-box;
+  padding: 10px;
+  cursor:pointer;
+  display: flex;
+  transition-duration: 0.4s;
+  flex-direction: column;
+  margin: 10px 1vw;
+
+}
+
+.hitem:hover {
+  scale: 1.05;
+}
+
+.hitem h2, .hitem p {
+  margin: 0;
+  padding: 0;
+  margin-bottom:2px;
+  margin-top:2px;
+}
+
+.hitem p {
+  font-size:13px;
+}
+
 
 #aboutimg:hover {
   scale: 1.05;
@@ -93,14 +182,15 @@ p {
 }
 
 .link {
-  background:transparent;
-  margin:0;
+  background: transparent;
+  margin: 0;
   vertical-align: center;
   padding: 10px;
-  border:none;
+  border: none;
 }
+
 .link:hover {
-  scale:1.1
+  scale: 1.1
 }
 
 @media screen and (max-width: 1100px) {
@@ -112,19 +202,19 @@ p {
     width: 70%;
   }
 
-  .ball {
+  /* .ball {
     width:11vh !important;
     height: 11vh !important;
-  }
+  } */
 
   #aboutbox {
     flex-direction: column-reverse !important;
-    
+
   }
 
   #aboutimg {
-    width:100% !important;
-    height:20% !important;
+    width: 100% !important;
+    height: 20% !important;
   }
 
 

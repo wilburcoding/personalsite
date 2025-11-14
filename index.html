@@ -12,7 +12,8 @@
 
 <body>
   <div class="container" id="top" style="background-color: white;position:fixed;top:0;left:0;">
-    <div class="infotop" style="position:fixed;top:30%;left:-200px;opacity:0;">
+    <div class="infotop"
+      style="position:fixed;top:30%;left:-200px;opacity:0;padding:20px;background: rgba(255, 255, 255, 0.1);border-radius:20px;backdrop-filter: blur(10px);z-index:58;pointer-events: none;">
       <p style="font-size: 30px;color:rgb(70, 70, 70);margin-top:0px;margin-bottom:5px;" id="infotop1">Hey, I'm</p>
       <p style="color:#5a68ff;margin-top:0px;margin-bottom:0px;line-height:190px;font-weight:500" id="infotop2">Wilbur
         Wei</p>
@@ -20,13 +21,13 @@
         things.</p>
     </div>
   </div>
-  <div class="container" id="topm" style="background-color: #8690ff;opacity: 0;position:relative;">
+  <div class="container" id="topm" style="background-color: #8690ff;opacity: 0;position:relative;pointer-events: none;">
 
   </div>
   <div class="container" id="about"
-    style="background-color: #8690ff;position:relative;z-index:50;height:auto;padding-top:10%;padding-bottom:10%;display:flex;flex-direction: row;">
+    style="background-color: #8690ff;position:relative;z-index:50;height:auto;padding-top:10%;display:flex;flex-direction: column;">
     <div class="aboutitext"
-      style="width:70%;position:relative;border-radius:5px;color:white;top:20%;background-color: #717dfd;padding:25px;left:-400px">
+      style="width:70%;position:relative;border-radius:5px;color:white;top:20%;background-color: #717dfd;padding:25px;left:-400px;margin-bottom:30px;">
       <div style="display:flex;flex-direction: row;align-items: stretch;flex-grow: 1;" id="aboutbox">
         <div style="flex:1;flex-grow: 1;margin:10px;">
           <h1 style="font-size:60px;margin-top:5px;margin-bottom:5px;">About Me</h1>
@@ -47,22 +48,50 @@
           </div>
         </div>
         <div style="flex:1;display:flex;align-items: center;justify-content:center">
-          <img src="./aboutimage.JPG" id="aboutimg"
+          <img src="./assets/aboutimage.JPG" id="aboutimg"
             style="height:90%;width:90%;position:relative;object-fit:cover;border-radius:5px;" />
 
         </div>
 
       </div>
-
     </div>
 
+    <div class="hinfo"
+      style="width:70%;position:relative;border-radius:5px;color:white;top:20%;background-color: #717dfd;padding:25px;left:-400px;margin-bottom:10%;">
+      <div style="display:flex;flex-direction: row;align-items: stretch;flex-grow: 1;">
+        <div style="flex:1;flex-grow: 1;margin:10px;">
 
+          <h1 style="font-size:60px;margin-top:5px;margin-bottom:5px;">Hackathon Travels</h1>
+          <p style="font-size: 25px;margin-top:3px;margin-bottom:4px;">Over the past few years, I've traveled up and
+            down
+            the East Coast, attending many amazing hackathons. I've had an amazing time in so many of them, spending
+            time
+            with my friends while meeting new people! It's one of my favorite things to do and I look forward to
+            attending more in the future!</p>
+          <div style="display:flex;flex-direction:row;align-items:center;color:white;">
+            <p style="font-size:25px;font-weight: 600;margin-top:5px;">Check out a cool map of my travels!</p>
+            <button class="link" id="hmap"><i class="fa-solid fa-arrow-up-right-from-square"
+                style="font-size:20px;margin-top:4px;cursor:pointer;color:white;"></i></button>
+          </div>
+
+        </div>
+        <div style="flex:1;display:flex;align-items: center;justify-content:center">
+          <img src="./assets/himage.jpeg" id="aboutimg"
+            style="height:90%;width:90%;position:relative;object-fit:cover;border-radius:5px;" />
+
+        </div>
+      </div>
+
+
+
+    </div>
   </div>
   <div class="container" id="projects"
     style="background-color: #eef0ff;position:relative;z-index:50;padding-bottom:20px;height:auto;display:flex;align-items: center;justify-content: center;">
     <div class="pmain">
       <h1 style="font-size:75px;color:#5a68ff;margin-top:0px;margin-bottom:0px;">Featured Projects</h1>
-      <p style="font-size:30px;color:black;margin-top:0px;margin-bottom:0px;font-weight: 300;">Here are some projects
+      <p style="font-size:30px;color:black;margin-top:0px;margin-bottom:0px;font-weight: 300;">Here are some
+        projects
         I've made that I'm pretty proud of.</p>
       <div style="width:100%;display:flex;flex-direction: row;margin-top:30px;">
         <div style="width:100%" class="plist">
@@ -86,7 +115,8 @@
         </div>
       </div> -->
       <!-- <div style="background-color: #717dfd; width:100%;height:calc(50% - 30px);display:flex;flex-direction: column;align-items: center;justify-content: center;"> -->
-      <p style="margin-top:0px;margin-bottom:0px;font-size:35px;width:80%;opacity:0;" id="quote">“Happiness is not in
+      <p style="margin-top:0px;margin-bottom:0px;font-size:35px;width:80%;opacity:0;" id="quote">“Happiness is not
+        in
         the mere possession of money; it lies in the joy of achievement, in the thrill of creative effort.”</p>
       <p style="margin-top:0px;margin-bottom:0px;font-size:25px;align-self: flex-end;margin-right:10%;opacity:0;"
         id="quoteauthor">- Franklin Delano Roosevelt</p>
@@ -159,7 +189,7 @@
             </div>
           </div>
           `)
-      $("#pi-" + pdata["id"]).on("click", () => {
+      $("#p-" + pdata["id"]).on("click", () => {
         window.open("https://" + link, "_blank");
       })
       const ptl = gsap.timeline({
@@ -180,17 +210,20 @@
     $(".plist").append(`
     <div style="display:flex;flex-direction:row;align-items:center">
     <p style="color:#5a68ff;font-size:25px;font-weight: 600;margin-top:5px;">See more projects at my Github page!</p>
-    <button class="link" id="moreprojects"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:20px;margin-top:4px;"></i></button>
+    <button class="link" id="moreprojects"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:20px;color:#5a68ff;margin-top:4px;cursor:pointer;"></i></button>
     </div>
     `)
     $("#moreprojects").on("click", () => {
       window.open("https://github.com/wilburcoding", "_blank");
     })
+    $("#hmap").on("click", () => {
+      window.location.href = "./hackathons.html";
+    })
 
 
     for (let i = 0; i < 9; i++) {
 
-      $("#top").append(`<div id="ball${i}" class="ball" style="width:15vh;height:15vh;opacity:0"></div>`);
+      $("#top").append(`<div id="ball${i}" class="ball" style="width:max(25vh, 15vw);height:max(25vh, 15vw);opacity:0"></div>`);
       const sT = ScrollTrigger.create({
         trigger: "#ball" + i,
         start: "top center",
@@ -210,7 +243,9 @@
       });
       $("#ball" + i).animate({
         opacity: 0.2 + 0.8 * (i / 9)
-      }, 1000)
+      }, 1000, function () {
+        $("#ball" + i).css("transition-duration", "0.5s");
+      })
       sT.refresh();
 
 
@@ -252,6 +287,17 @@
       }
     })
     t3.to(".aboutitext", { x: "+" + (400 + width * 0.15) });
+
+    const t7 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hinfo",
+        start: "top bottom",
+        end: "bottom bottom",
+        scrub: true,
+        markers: false,
+      }
+    })
+    t7.to(".hinfo", { x: "+" + (400 + width * 0.15) });
 
     const t4 = gsap.timeline({
       scrollTrigger: {
